@@ -4,18 +4,18 @@ LDLLIBS = -lstdc++ -lm
 Out.txt. : main
 	./main > Out.txt
 
-main : main.o hello.o
-	$(CXX) main.o hello.o -o main $(LDLLIBS)
+main : main.o sfuns.o
+	$(CXX) main.o sfuns.o -o main $(LDLLIBS)
 
-main.o : hello.h main.cc
+main.o : sfuns.h main.cc
 	$(CXX) $(CXXFlags) -c main.cc -o main.o
 
-hello.o : hello.h hello.cc
-	$(CXX) $(CXXFlags) -c hello.cc -o hello.o
+sfuns.o : sfuns.h sfuns.cc
+	$(CXX) $(CXXFlags) -c sfuns.cc -o sfuns.o
 
 .PHONEY:clean
 clean:
-	$(RM) --force main main.o hello.o Out.txt
+	$(RM) --force main Out.txt *.o
 
 test:
 	@echo CXX
