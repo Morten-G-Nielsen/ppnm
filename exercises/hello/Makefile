@@ -1,7 +1,8 @@
 CXXFlags = -Wall -Wextra -Werror -std=c++23 -O
 LINK.o = $(CXX) $(LDFLAGS)
 LDLLIBS = -lstdc++ -lm
-Out.txt. : main
+
+Out.txt : main
 	./main > Out.txt
 
 main : main.o hello.o
