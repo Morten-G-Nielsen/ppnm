@@ -32,7 +32,7 @@ int main(){
     std::cout << "\ndot(basis[0], basis[1]) = " << dot(basis[0], basis[1]) << "\n";
     std::cout << "dot(basis[0], basis[2]) = " << dot(basis[0], basis[2]) << "\n";
     std::cout << "dot(basis[1], basis[2]) = " << dot(basis[1], basis[2]) << "\n";
-    std::cout << "\napprox(a, a*(1+1e-7)) = " << approx(a, a*(1+1e-7)) << "\n";
-    std::cout << "approx(a, a*(2)) = " << approx(a, a*(2)) << "\n";
+    std::cout << "\napprox(a, a*(1+1e-7)) = " << (approx(a, a*(1+1e-7)) ? "true":"false") << "\n";
+    std::cout << "approx(a, a*(2)) = " << (approx(a, a*(2)) ? "true":"false") << "\n";
     return 0;
 }
