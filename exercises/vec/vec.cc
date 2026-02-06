@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <cmath>
 #include <string>
 #include "vec.h"
@@ -84,6 +85,28 @@ double norm(const vec& v) {
 
 vec cross(const vec& a, const vec& b) {
   return vec(a.y*b.z - a.z*b.y, a.z*b.x-a.x*b.z, a.x*b.y-a.y*b.x);
+}
+
+vec proj(const vec& v, const vec& u) {
+  double scale = dot(v, u) / dot(u,u);
+  return u*scale;
+}
+
+std::vector<vec> GramSchmidt(const std::vector<vec>& input) {
+  std::vector<vec> res;
+
+  for (const vec& v : input) 
+  {
+    vec w = v;
+
+    for (const vec& u : res) 
+    {
+      w = w - proj(v, u);
+    }
+
+    res.push_back(w/norm(w));
+  }
+  return res;
 }
 
 bool approx(double a, double b, double acc=1e-6, double eps=1e-6){

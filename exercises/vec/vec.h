@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #pragma once
 struct vec{
   double x,y,z;
@@ -36,4 +37,6 @@ double dot(const vec&, const vec&);
 double norm(const vec&);
 vec cross(const vec&, const vec&);
 
-bool approx(const vec&, const vec&, double acc, double eps);
+std::vector<vec> GramSchmidt(const std::vector<vec>& input);
+
+bool approx(const vec&, const vec&, double acc=1e-6, double eps=1e-6);
