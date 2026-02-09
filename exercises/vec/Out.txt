@@ -1,0 +1,26 @@
+test = 0 0 0
+a = 1 2 3
+b = 4 5 6
+
+test += a = 1 2 3
+test-=b = -3 -3 -3
+test = -6 -6 -6
+-test = 6 6 6
+test=b-a= -3 -3 -3
+
+norm(test) = 5.19615
+dot(test,a) = -18
+cross(test,a) = { -3, 6, -3 } 
+dot(test, cross(test,a)) = 0, dot(a,cross(test,a)) = 0
+
+basis from GramSchmidt({cross(test,a),a,b})
+{ -0.408248, 0.816497, -0.408248 } norm = 1
+{ 0.267261, 0.534522, 0.801784 } norm = 1
+{ 0.872872, 0.218218, -0.436436 } norm = 1
+
+dot(basis[0], basis[1]) = 0
+dot(basis[0], basis[2]) = -1.38778e-16
+dot(basis[1], basis[2]) = -3.88578e-16
+
+approx(a, a*(1+1e-7)) = true
+approx(a, a*(2)) = false
