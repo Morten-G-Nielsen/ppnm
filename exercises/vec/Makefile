@@ -8,8 +8,8 @@ all: Out.txt
 Out.txt : main
 	./$< > $@
 
-main : main.o vec.o 
-main.o vec.o: vec.h 
+main : main.o 
+main.o : vec.h 
 
 .PHONEY:clean
 clean:
