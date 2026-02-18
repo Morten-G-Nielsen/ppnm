@@ -1,0 +1,7 @@
+set terminal svg
+set output "fig1.svg"
+set xlabel "x"
+set ylabel "y"
+set key right bottom
+set tics out
+plot [0:3] "data/erf.data" using 1:2 with points pointtype 4 title "erf data from wiki", erf(x) title "erf from gnuplot"

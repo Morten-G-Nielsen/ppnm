@@ -1,0 +1,17 @@
+set terminal svg
+set output "fig4.svg"
+set samples 100
+set isosamples 100
+
+set xrange [-5:5]
+set yrange [-5:5]
+set zrange [0:10]
+
+set xlabel "Re(z)"
+set ylabel "Im(z)"
+set zlabel "|Gamma(z)|"
+
+set pm3d 
+set hidden3d
+set view 60, 330
+splot exp(real(lnGamma(x+y*I))) title "Gamma(z)"

@@ -1,0 +1,7 @@
+set terminal svg
+set output "fig2.svg"
+set xlabel "x"
+set ylabel "y"
+set key right bottom
+set tics in
+plot [-3:3] "data/gamma.data" using 1:2 with points pointtype 4 title "x!", gamma(x+1) title "gamma(x+1) from gnuplot"  
