@@ -1,0 +1,24 @@
+threads: 1
+terms: 1e+11
+total sum= 25.9057
+threads: 2
+terms: 1e+11
+total sum= 25.9057
+threads: 3
+terms: 1e+11
+total sum= 25.9057
+threads: 4
+terms: 1e+11
+total sum= 25.9057
+threads: 5
+terms: 1e+11
+total sum= 25.9057
+threads: 6
+terms: 1e+11
+total sum= 25.9057
+threads: 7
+terms: 1e+11
+total sum= 25.9057
+threads: 8
+terms: 1e+11
+total sum= 25.9057
