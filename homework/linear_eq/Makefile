@@ -19,7 +19,7 @@ times.svg: Out.times
 
 Out.times: main
 	>$@
-	for N in $$(seq 100 20 400); do \
+	for N in $$(seq 100 60 1000); do \
 		time --format "$$N %e %U" --output $@ --append \
 		./$< -size $$N ;\
 		done
@@ -27,8 +27,8 @@ Out.times: main
 Out.txt: main
 	./$< >$@ 
 
-main: main.cc
+main: main.cc linalg.cc
 
 
 clean:
-	$(RM) Out* main
+	$(RM) Out* *.o main
