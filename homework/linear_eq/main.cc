@@ -36,6 +36,7 @@ int main(int argc, char** argv){
       if(arg == "-size" && i+1<argc) N = std::stoi(argv[++i]);
     }
     pp::matrix A(N, N); A.fill_random();
+    pp::QR sys(A);
   }
   return 0;
 }

@@ -1,4 +1,4 @@
-CXXFLAGS = -std=c++23 -Wall
+CXXFLAGS = -std=c++23 -Wall -O3
 LDLIBS = -lstdc++ -lm
 
 times.svg: Out.times
