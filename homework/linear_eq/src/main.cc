@@ -1,33 +1,36 @@
 #include <iostream>
 #include <string>
-#include "linalg.h"
+#include "vector.h"
+#include "matrix.h"
+#include "qr.h"
 
 int main(int argc, char** argv){
   if(argc<2){
-    int n1 = 2;
+    int n1 = 3;
     int m = 2;
     pp::matrix A1(n1,m);
-    A1.row(0).copy_from(pp::vector{3,1});
-    A1.row(1).copy_from(pp::vector{4,2});
-    std::cout << A1 << "\n";
-    std::cout << A1.column(0) <<"\n";
+    A1.fill_random();
     pp::QR sys1(A1);
     auto Q = sys1.Q;
     auto R = sys1.R;
-    std::cout << "QR-decomp test\n"<< "A1\n"<< A1;
+    std::cout << "QR-decomp test\n"<< "A1(3,2)\n"<< A1;
+    std::cout << "Q\n"<< Q;
     std::cout << "R\n"<< R;
     std::cout << "Q^T*Q\n"<< Q.transpose()*Q<<"\n";
-    std::cout << "Q*R-A\n"<< Q*R - A1 << "\n";
+    std::cout << "Q*R-A\n"<< Q*R - A1;
+    std::cout << "det(A)\n" << sys1.det() << "\n\n";
 
     int n2 = 4;
     pp::matrix A2(n2, n2); A2.fill_random();
     pp::vector b(n2); b.fill_random();
     pp::QR sys2(A2);
     auto x = sys2.solve(b);
-    std::cout << "Solve test\n"<< "A2\n"<< A2 << "b\n" << b;
+    std::cout << "Solve test\n"<< "A2(4,4)\n"<< A2 << "b\n" << b;
+    std::cout << "\nsolution x\n" << x << "\n";
     std::cout << "\nA2*x - b\n" << A2*x-b << "\n";
     auto B = sys2.inverse();
-    std::cout << "Inverse test\n"<<"A2*B\n" << A2*B << "\n";
+    std::cout << "Inverse test\n"<< "B\n" << B;
+    std::cout <<"A2*B\n" << A2*B << "\n";
   }
   else {
     int N = 1;

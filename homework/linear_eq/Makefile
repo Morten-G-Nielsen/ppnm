@@ -1,5 +1,8 @@
-CXXFLAGS = -std=c++23 -Wall -O3
+CXXFLAGS = -std=c++23 -Wall -Iinclude -O3
 LDLIBS = -lstdc++ -lm
+SRCS = $(wildcard src/*.cc)
+
+all: times.svg Out.txt
 
 times.svg: Out.times
 	echo '\
@@ -16,19 +19,19 @@ times.svg: Out.times
 			, f(x) title "fit with n³" ;\
 		' | gnuplot
 
-
 Out.times: main
 	>$@
 	for N in $$(seq 100 60 1000); do \
-		time --format "$$N %e %U" --output $@ --append \
-		./$< -size $$N ;\
+		time --format "$$N %U" --output $@ --append \
+		./$< -size $$N > /dev/null ;\
 		done
 
 Out.txt: main
-	./$< >$@ 
+	./$< > $@ 
 
-main: main.cc linalg.cc
+main: $(SRCS)
+	$(CXX) $^ $(CXXFLAGS) $(LDLIBS) -o $@
 
 
 clean:
-	$(RM) Out* *.o main
+	$(RM) Out* *.svg *.log main
