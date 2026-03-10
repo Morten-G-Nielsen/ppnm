@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "vector.h"
-#include "matrix.h"
+#include "core/vector.h"
+#include "core/matrix.h"
 #include "qr.h"
 
 int main(int argc, char** argv){

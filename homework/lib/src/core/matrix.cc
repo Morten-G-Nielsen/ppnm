@@ -1,8 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <random>
-#include "vector.h"
-#include "matrix.h"
+#include <stdexcept>
+#include "../../include/core/vector.h"
+#include "../../include/core/matrix.h"
 
 namespace pp{ 
 matrix::matrix(int r, int c): data(r*c), rows_(r), cols_(c) {};
@@ -59,6 +60,17 @@ void matrix::fill_random(double min, double max){
       (*this)(i,j) = dist(gen);
     }
   }
+}
+bool matrix::is_symetric(double tol)const{
+  if(rows_ != cols_) return false;
+  for(int i = 0; i<rows_; ++i){
+    for(int j = i+1; j<cols_; ++j){
+      if(std::abs((*this)(i,j)-(*this)(j,i)) > tol){
+        return false;
+      }
+    }
+  }
+  return true;
 }
 matrix& matrix::operator=(const matrix& other){
   if(this == &other) return *this;

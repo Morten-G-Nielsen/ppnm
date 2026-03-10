@@ -34,6 +34,7 @@ namespace pp{
     matrix transpose() const;
     static matrix identity(int n);
     void fill_random(double min=-1, double max = 1);
+    bool is_symetric(double tol = 1e-12)const;
 
     matrix& operator=(const matrix& other);
     matrix& operator=(matrix&& other)noexcept;

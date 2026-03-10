@@ -1,5 +1,5 @@
-#include "core/vector.h"
-#include "core/matrix.h"
+#include "vector.h"
+#include "matrix.h"
 #include "qr.h"
 
 namespace pp{

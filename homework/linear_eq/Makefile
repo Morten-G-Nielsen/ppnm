@@ -1,5 +1,6 @@
-CXXFLAGS = -std=c++23 -Wall -Iinclude -O3
+CXXFLAGS = -std=c++23 -Wall -I../lib/include -O3 -march=native
 LDLIBS = -lstdc++ -lm
+LIB_SRCS = $(wildcard ../lib/src/core/*.cc)
 SRCS = $(wildcard src/*.cc)
 
 all: times.svg Out.txt
@@ -29,7 +30,7 @@ Out.times: main
 Out.txt: main
 	./$< > $@ 
 
-main: $(SRCS)
+main: $(SRCS) $(LIB_SRCS)
 	$(CXX) $^ $(CXXFLAGS) $(LDLIBS) -o $@
 
 
