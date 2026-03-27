@@ -1,6 +1,6 @@
 #pragma once
-#include "vector.h"
-#include "matrix.h"
+#include "core/vector.h"
+#include "core/matrix.h"
 
 namespace pp{
   struct EVD{

@@ -1,6 +1,6 @@
-#include "../include/core/vector.h"
-#include "../include/core/matrix.h"
-#include "../include/qr.h"
+#include "core/vector.h"
+#include "core/matrix.h"
+#include "qr.h"
 
 namespace pp{
 QR::QR(const matrix& other)

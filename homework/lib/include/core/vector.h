@@ -55,7 +55,7 @@ namespace pp{
     friend std::ostream& operator<<(std::ostream& os, const vector& v);
   };
 
-  vector operator+(const vector& v, const vector& u);
+  vector operator+(vector v, const vector& u);
   vector operator-(vector v, const vector& u);
   vector operator-(vector v);
   vector operator*(vector v, const double s);

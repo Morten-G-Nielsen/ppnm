@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <random>
-#include "../../include/core/vector.h"
+#include "core/vector.h"
 
 namespace pp{
 vector::vector(int n) : data(n, 0.0), size_(n), stride(1){

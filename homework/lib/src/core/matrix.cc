@@ -2,8 +2,8 @@
 #include <iomanip>
 #include <random>
 #include <stdexcept>
-#include "../../include/core/vector.h"
-#include "../../include/core/matrix.h"
+#include "core/vector.h"
+#include "core/matrix.h"
 
 namespace pp{ 
 matrix::matrix(int r, int c): data(r*c), rows_(r), cols_(c) {};
