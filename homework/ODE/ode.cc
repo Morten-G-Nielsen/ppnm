@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cmath>
 #include <functional>
 #include "core/vector.h"
@@ -14,6 +13,21 @@ rk_step_res rk_12::step(
   vector dy = (k1-k0)*h;
   return {yh, dy};
 }
+
+rk_step_res rk_23::step(
+    const std::function<vector(double, vector)>& f,
+    double x, const vector& y, double h){
+  vector k0 = f(x,y);
+  vector k1 = f(x+h/2.0, y + k0/2.0*h);
+  vector k2 = f(x+3.0/4.0*h, y + 3.0/4.0*k1*h);
+  vector k3 = f(x+h, y + (2.0/9.0*k0 + k1/3.0 + 4.0/9.0*k2)*h);
+  vector y2 = y + (2.0/9.0*k0 + k1/3.0 + 4.0/9.0*k2)*h;
+  vector y3 = y + (7.0/24.0*k0 + k1/4.0 + k2/3.0 + k3/8.0)*h;
+  vector dy = y3 - y2;
+  return {y3, dy};
+}
+   
+
 rk_step_res rk_45::step(
     const std::function<vector(double, vector)>& f,
     double x, const vector& y, double h){

@@ -7,8 +7,9 @@ all: times.svg Out.txt
 
 times.svg: Out.times
 	echo '\
-		set terminal svg ;\
+		set terminal svg background rgb "white" ;\
 		set title "QR decomp for NxN matrix" ;\
+		set grid; \
 		set output "$@" ;\
 		set xlabel "N" ;\
 		set ylabel "time [s]" ;\

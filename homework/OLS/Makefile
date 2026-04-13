@@ -12,7 +12,7 @@ fit.svg: data.txt main
 	echo 'f1(x) = exp((a+da)+(b+db)*x)'; \
 	echo 'f2(x) = exp((a-da)+(b-db)*x)'; \
 	echo ' \
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set title "Decay"; \
 		set output "$@"; \
 		set xlabel "time [days]"; \

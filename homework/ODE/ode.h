@@ -29,6 +29,12 @@ struct rk_12 : public rk_stepper{
       double x, const vector& y, double h) override;
 };
 
+struct rk_23 : public rk_stepper{
+  rk_step_res step(
+      const std::function<vector(double, vector)>& f,
+      double x, const vector& y, double h) override;
+};
+
 struct rk_45 : public rk_stepper{
   rk_step_res step(
       const std::function<vector(double, vector)>& f,

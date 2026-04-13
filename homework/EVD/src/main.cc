@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include <string>
-#include "vector.h"
-#include "matrix.h"
+#include "core/vector.h"
+#include "core/matrix.h"
 #include "evd.h"
 
 int main(int argc, char* argv[]){

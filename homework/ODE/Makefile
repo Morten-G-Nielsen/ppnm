@@ -8,7 +8,7 @@ all: $(PLOTS)
 
 Three-Body.svg: Three-Body.txt
 	echo '\
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set output "$@"; \
 		set xlabel "x"; \
 		set ylabel "y"; \
@@ -26,7 +26,7 @@ Relativistic-precession.svg: RPPO3.txt interpolate
 	./interpolate --input $< --output 1.txt
 	echo "0 0" > temp.txt
 	echo '\
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set output "$@"; \
 		set size ratio -1; \
 		set title "Relativistic precession"; \
@@ -43,7 +43,7 @@ Elliptical.svg: RPPO2.txt interpolate
 	./interpolate --input $< --output 1.txt
 	echo "0 0" > temp.txt
 	echo '\
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set output "$@"; \
 		set title "Elliptical orbit"; \
 		set size ratio -1; \
@@ -60,7 +60,7 @@ Circular.svg: RPPO1.txt interpolate
 	./interpolate --input $< --output 1.txt
 	echo "0 0" > temp.txt
 	echo '\
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set output "$@"; \
 		set title "Circular orbit"; \
 		set xlabel "x"; \
@@ -83,7 +83,7 @@ RPPO1.txt: main
 
 Lotka-Volterra.svg: Lotka-Volterra.txt
 	echo '\
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set output "$@"; \
 		set title "Lotka Volterra"; \
 		set xlabel "time"; \
@@ -97,7 +97,7 @@ Lotka-Volterra.txt: main
 
 Oscillator.svg: Oscillator.txt
 	echo '\
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set output "$@"; \
 		set title "Oscillator with friction"; \
 		set xlabel "time"; \

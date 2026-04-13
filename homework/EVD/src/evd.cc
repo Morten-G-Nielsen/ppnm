@@ -1,6 +1,6 @@
 #include <cmath>
-#include "vector.h"
-#include "matrix.h"
+#include "core/vector.h"
+#include "core/matrix.h"
 #include "evd.h"
 
 namespace pp{

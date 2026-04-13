@@ -1,4 +1,4 @@
-CXXFLAGS = -std=c++23 -I../lib/include/core -Iinclude -O3 -march=native
+CXXFLAGS = -std=c++23 -I../lib/include -Iinclude -O3 -march=native
 
 SRCS = $(wildcard ../lib/src/core/*.cc)
 
@@ -6,7 +6,7 @@ all: time.svg wf.svg rmax.svg dr.svg out.txt
 
 time.svg: out.times.txt
 	echo '\
-				set terminal svg; \
+				set terminal svg background rgb "white"; \
 				set output "plots/$@"; \
 				set title "Time vs N"; \
 				set xlabel "N";\
@@ -22,7 +22,7 @@ time.svg: out.times.txt
 
 wf.svg: wf.data.txt
 	echo '\
-			set terminal svg; \
+			set terminal svg background rgb "white"; \
 			set output "plots/$@"; \
 			set title  "Numerical vs Analytical Wavefunctions (l=0)"; \
 			set xlabel "r (Bohr)"; \
@@ -40,7 +40,7 @@ wf.svg: wf.data.txt
 
 dr.svg: dr.data.txt
 	echo '\
-			set terminal svg; \
+			set terminal svg background rgb "white"; \
 			set output "plots/$@"; \
 			set title  "Ground state energy vs dr with r_{max}=20"; \
 			set xlabel "dr (Bohr)"; \
@@ -53,7 +53,7 @@ dr.svg: dr.data.txt
 
 rmax.svg: rmax.data.txt
 	echo '\
-			set terminal svg; \
+			set terminal svg background rgb "white"; \
 			set output "plots/$@"; \
 			set title  "Ground state energy vs r_{max} with dr=0.1"; \
 			set xlabel "r_{max} (Bohr)"; \

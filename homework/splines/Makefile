@@ -5,7 +5,7 @@ all: CubicSpline.svg QuadraticSpline.svg LinearSpline.svg TrueShape.svg
 
 TrueShape.svg: True_shape.txt
 	echo ' \
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set title "True shape"; \
 		set output "$@"; \
 		set xlabel "x"; \
@@ -19,7 +19,7 @@ TrueShape.svg: True_shape.txt
 	$(RM) True_shape.txt
 CubicSpline.svg: cubic_spline.txt data.txt
 	echo ' \
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set title "Cubic spline"; \
 		set output "$@"; \
 		set xlabel "x"; \
@@ -34,7 +34,7 @@ CubicSpline.svg: cubic_spline.txt data.txt
 	$(RM) cubic_spline.txt
 QuadraticSpline.svg: quad_spline.txt data.txt
 	echo ' \
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set title "Quadratic spline"; \
 		set output "$@"; \
 		set xlabel "x"; \
@@ -49,7 +49,7 @@ QuadraticSpline.svg: quad_spline.txt data.txt
 	$(RM) quad_spline.txt
 LinearSpline.svg: line_spline.txt data.txt
 	echo ' \
-		set terminal svg; \
+		set terminal svg background rgb "white"; \
 		set title "Linear spline"; \
 		set output "$@"; \
 		set xlabel "x"; \
