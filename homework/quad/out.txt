@@ -1,0 +1,63 @@
+---Newton-Cotes---
+Integral of sqrt(x) from 0 to 1
+Calculated integral:  0.6666666797
+True solution:        0.6666666667
+Estimated error:      0.0000005617
+True error:           0.0000000130
+Function evals:       276
+
+Integral of 1/sqrt(x) from 0 to 1
+Calculated integral:  1.9999437582
+True solution:        2.0000000000
+Estimated error:      0.0000084909
+True error:           0.0000562418
+Function evals:       2448
+
+Integral of sqrt(1 - x^2) from 0 to 1
+Calculated integral:  0.7853981706
+True solution:        0.7853981634
+Estimated error:      0.0000004223
+True error:           0.0000000072
+Function evals:       384
+
+Integral of ln(x)/sqrt(x) from 0 to 1
+Calculated integral:  -3.9986678613
+True solution:        -4.0000000000
+Estimated error:      0.0001782506
+True error:           0.0013321387
+Function evals:       4576
+
+---Clenshaw-Curtis---
+Integral of 1/sqrt(x) from 0 to 1
+Calculated integral:  1.9999999999
+True solution:        2.0000000000
+Estimated error:      0.0000006601
+True error:           0.0000000001
+Function evals:       352
+
+Integral of ln(x)/sqrt(x) from 0 to 1
+Calculated integral: -4.0000000660
+True solution:       -4.0000000000
+Estimated error:      0.0000006326
+True error:           0.0000000660
+Function evals:       1864
+
+Integral of exp(-x^2) from -inf to inf
+Calculated integral:  1.7724538299
+True solution:        1.7724538509
+Estimated error:      0.0000005117
+True error:           0.0000000210
+Function evals:       1128
+
+Integral of 1/(1 + x^2) from 0 to inf
+Calculated integral:  1.5707963311
+True solution:        1.5707963268
+Estimated error:      0.0000005645
+True error:           0.0000000043
+Function evals:       584
+
+---Integration using QUADPCK from scipy---
+Evals for 1/sqrt(x) from 0 to 1:       231
+Evals for ln(x)/sqrt(x) from 0 to 1:   315
+Evals for exp(-x^2) from -inf to inf:  270
+Evals for 1/(1+x^2) from 0 to inf:     45
