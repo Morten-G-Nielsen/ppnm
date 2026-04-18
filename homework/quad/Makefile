@@ -9,6 +9,7 @@ erfofone.svg: erfofone.txt
 	echo '\
 		set terminal svg background rgb "white"; \
 		set output "$@"; \
+		set title "Error of calculated value of erf(1)"; \
 		set xlabel "acc"; \
 		set ylabel "err"; \
 		set logscale xy; \
@@ -24,6 +25,7 @@ erf.svg: erfdata.txt
 	echo '\
 		set terminal svg background rgb "white"; \
 		set output "$@"; \
+		set title "Error function using quad"; \
 		set xlabel "x"; \
 		set ylabel "erf(x)"; \
 		set grid; \
