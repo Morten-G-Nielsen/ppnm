@@ -1,0 +1,37 @@
+---Plain Monte Carlo on elipsoid---
+Trials:                   20
+Exact result:             25.13274123
+Mean integral:            25.112088 +/- 0.08278768238
+Mean estimated error:     0.07581271234 +/- 1.212321473e-05
+Mean true error:          0.07138824574
+TrueError/EstimatedError: 0.9416395159
+
+
+---Comparison between methods on singular integral---
+---Plain Monte Carlo with LCG---
+Trials:                   20
+Exact result:             1.39320393
+Mean integral:            1.404752035 +/- 0.05561608102
+Mean estimated error:     0.02993230078 +/- 0.03121285801
+Mean true error:          0.03301786307
+TrueError/EstimatedError: 1.103084701
+---Plain Monte Carlo with StdRNG---
+Trials:                   20
+Exact result:             1.39320393
+Mean integral:            1.387269377 +/- 0.02158275018
+Mean estimated error:     0.01854889688 +/- 0.008330046197
+Mean true error:          0.0160342134
+TrueError/EstimatedError: 0.8644294867
+---Quasi Monte Carlo with Halton---
+Exact result:             1.39320393
+Integral:                 1.379004046
+Estimated error:          0.0004034482519
+True error:               0.01419988362
+TrueError/EstimatedError: 35.19629483
+---Stratified Monte Carlo with LCG---
+Trials:                   20
+Exact result:             1.39320393
+Mean integral:            1.378625412 +/- 0.01939536109
+Mean estimated error:     0.01679554523 +/- 0.007431515636
+Mean true error:          0.02100844303
+TrueError/EstimatedError: 1.250834238
