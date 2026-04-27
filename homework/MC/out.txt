@@ -24,10 +24,16 @@ Mean true error:          0.0160342134
 TrueError/EstimatedError: 0.8644294867
 ---Quasi Monte Carlo with Halton---
 Exact result:             1.39320393
-Integral:                 1.379004046
-Estimated error:          0.0004034482519
-True error:               0.01419988362
-TrueError/EstimatedError: 35.19629483
+Integral:                 1.378241771
+Estimated error:          0.001927998502
+True error:               0.01496215875
+TrueError/EstimatedError: 7.760461812
+---Quasi Monte Carlo with Halton and Lattice---
+Exact result:             1.39320393
+Integral:                 1.360316586
+Estimated error:          0.03777836909
+True error:               0.03288734404
+TrueError/EstimatedError: 0.8705337164
 ---Stratified Monte Carlo with LCG---
 Trials:                   20
 Exact result:             1.39320393

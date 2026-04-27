@@ -100,13 +100,20 @@ int main(int argc, char* argv[]) {
       MCPlain rule2(gen2);
       auto res2 = run_test(rule2, gen2, seed, f, a, b, N, trials, exact);
 
-      MCHalton rule3;
+      Halton hal;
+      Halton hal2(10000);
+      MCQuasi rule3(hal, hal2);
       MCIntegrator integrator(rule3);
       auto res3 = integrator.integrate(f, a, b, N);
 
-      LCG gen4(seed);
-      MCStrat rule4(gen4);
-      auto res4 = run_test(rule4, gen4, seed, f, a, b, N, trials, exact);
+      Lattice lat;
+      MCQuasi rule4(hal, lat);
+      integrator.set_rule(rule4);
+      auto res4 = integrator.integrate(f, a, b, N);
+
+      gen1.set_seed(seed);
+      MCStrat rule5(gen1);
+      auto res5 = run_test(rule5, gen1, seed, f, a, b, N, trials, exact);
     
       std::cout << "---Plain Monte Carlo on elipsoid---\n";
       print_res(res);
@@ -121,9 +128,17 @@ int main(int argc, char* argv[]) {
         << "\nEstimated error:          " << res3.error 
         << "\nTrue error:               " << std::abs(res3.integral - exact)
         << "\nTrueError/EstimatedError: " << std::abs(res3.integral - exact)/res3.error 
-        <<"\n";
+        << "\n";
+      std::cout << "---Quasi Monte Carlo with Halton and Lattice---\n"
+        << std::setprecision(10)
+        << "Exact result:             " << exact
+        << "\nIntegral:                 " << res4.integral
+        << "\nEstimated error:          " << res4.error 
+        << "\nTrue error:               " << std::abs(res4.integral - exact)
+        << "\nTrueError/EstimatedError: " << std::abs(res4.integral - exact)/res4.error 
+        << "\n";
       std::cout << "---Stratified Monte Carlo with LCG---\n";
-      print_res(res4);
+      print_res(res5);
     } else if(id == 2){
       std::vector<double> a{0.0, 0.0}, b{1.0, 1.0};
       double exact = 2.0/3.0;
@@ -136,13 +151,15 @@ int main(int argc, char* argv[]) {
       MCPlain rule1(gen1);
       auto res1 = run_test(rule1, gen1, seed, f, a, b, N, trials, exact);
 
-      MCHalton rule2;
+      Halton hal;
+      Lattice lat;
+      MCQuasi rule2(hal, lat);
       MCIntegrator integrator(rule2);
       auto res2 = integrator.integrate(f, a, b, N);
 
-      LCG gen3(seed);
-      MCStrat rule3(gen3);
-      auto res3 = run_test(rule3, gen3, seed, f, a, b, N, trials, exact);
+      gen1.set_seed(seed);
+      MCStrat rule3(gen1);
+      auto res3 = run_test(rule3, gen1, seed, f, a, b, N, trials, exact);
       std::cout << N << " " << res1.mean_true_error << " " 
         << std::abs(res2.integral - exact)
         << " " << res3.mean_true_error << "\n";

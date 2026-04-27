@@ -19,7 +19,7 @@ void StdRNG::set_seed(unsigned int seed){
   gen.seed(seed);
 }
 
-const std::vector<int>& Halton::get_prime(size_t max_dim){
+const std::vector<int>& get_prime(size_t max_dim){
   static std::vector<int> primes = {2, 3, 5, 7, 11, 13, 17, 19};
   int candidate = primes.back() + 2;
   while(primes.size() < max_dim){
@@ -45,6 +45,12 @@ double Halton::get(int index, size_t dim){
     bk /= base;
   }
   return q;
+}
+
+double Lattice::get(int index, size_t dim){
+  const auto& primes = get_prime(dim);
+  double alpha = std::fmod(std::sqrt(primes[dim]), 1.0);
+  return std::fmod(index*alpha, 1.0);
 }
 
 MCResult MCPlain::integrate(const std::function<double(const std::vector<double>&)>& f,
@@ -74,7 +80,7 @@ MCResult MCPlain::integrate(const std::function<double(const std::vector<double>
     }
 
 
-MCResult MCHalton::integrate(const std::function<double(const std::vector<double>&)>& f,
+MCResult MCQuasi::integrate(const std::function<double(const std::vector<double>&)>& f,
     const std::vector<double>& a,
     const std::vector<double>& b,
     size_t N) const {
@@ -84,12 +90,11 @@ MCResult MCHalton::integrate(const std::function<double(const std::vector<double
   for(size_t i = 0; i<dim; i++) V*=std::abs(b[i]-a[i]);
   std::vector<double> x(dim);
   std::vector<double> y(dim);
-  Halton gen;
 
   for(size_t i = 0; i<N; i++){
     for(size_t j = 0; j<dim; j++){
-      x[j] = a[j]+gen.get(i+1, j)*(b[j]-a[j]);
-      y[j] = a[j]+gen.get(i+100000, j)*(b[j]-a[j]);
+      x[j] = a[j]+gen1.get(i+1+gen1.offset, j)*(b[j]-a[j]);
+      y[j] = a[j]+gen2.get(i+1+gen2.offset, j)*(b[j]-a[j]);
     }
     sum.first += f(x);
     sum.second += f(y);
