@@ -1,0 +1,27 @@
+---Convergense test for Rosenbrock with start guess (5, -1)---
+Newton's method with backtracking linesearch
+Result: [         1,          1]
+Function evals: 33905
+Newton's method with quadratic interpolation
+Result: [         1,          1]
+Function evals: 30151
+Broyden's method with backtracking linesearch
+Result: [         1,          1]
+Function evals: 42556
+Broyden's method with quadratic interpolation
+Result: [         1,          1]
+Function evals: 21037
+
+---Convergense test for Himmelblau with start guess (5, -1)---
+Newton's method with backtracking linesearch
+Result: [   3.58443,   -1.84813]
+Function evals: 49
+Newton's method with quadratic interpolation
+Result: [   3.58443,   -1.84813]
+Function evals: 49
+Broyden's method with backtracking linesearch
+Result: [   3.58443,   -1.84813]
+Function evals: 33
+Broyden's method with quadratic interpolation
+Result: [   3.58443,   -1.84813]
+Function evals: 33

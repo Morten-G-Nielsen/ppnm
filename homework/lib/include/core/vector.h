@@ -51,6 +51,7 @@ namespace pp{
     void point_to(const vector& other); // Pointer rerouting used for the "View"
 
     double norm() const;
+    double norm_sq() const;
     void fill_random(double min=-1, double max=1);
     friend std::ostream& operator<<(std::ostream& os, const vector& v);
   };

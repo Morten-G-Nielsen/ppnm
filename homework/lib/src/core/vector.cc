@@ -62,6 +62,16 @@ double vector::norm()const{
   }
   return std::sqrt(sum);
 }
+double vector::norm_sq()const{
+  double sum = 0;
+  double* ptr = start;
+  for(int i = 0; i<size_; ++i){
+    double val = *ptr;
+    sum += val*val;
+    ptr += stride;
+  }
+  return sum;
+}
 void vector::copy_from(const vector& other){
   if(this->size_ != other.size_){
     throw std::runtime_error("Vector size mismatch in copy_from");
