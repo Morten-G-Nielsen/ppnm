@@ -3,7 +3,7 @@ LDLIBS = -lstdc++ -lm -lpthread
 
 times.svg: out.times
 	echo '\
-		set terminal svg ;\
+		set terminal svg background rgb "white" ;\
 		set output "$@" ;\
 		set xlabel "number of threads" ;\
 		set ylabel "real time" ;\

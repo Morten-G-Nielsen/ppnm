@@ -1,4 +1,4 @@
-set terminal svg
+set terminal svg background rgb "white"
 set output "fig4.svg"
 set samples 100
 set isosamples 100
