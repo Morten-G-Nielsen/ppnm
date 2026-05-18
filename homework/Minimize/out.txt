@@ -1,0 +1,22 @@
+---Fitting parametres---
+Mass m: 125.972 +/- 0.25101
+Resonance width Gamma: 2.08633 +/- 2.14862
+Scale factor A: 9.87621 +/- 10.3279
+
+---Rosenbrock---
+Minima: (1, 1)
+---Forward difference---
+Result: [9.9999441422e-01, 9.9998880853e-01]
+Function evals: 17727
+---Central difference---
+Result: [9.9999995495e-01, 9.9999990977e-01]
+Function evals: 18751
+
+---Himmelblau---
+Minima: (3, 2)
+---Forward difference---
+Result: [2.9999999824e+00, 1.9999999964e+00]
+Function evals: 18000
+---Central difference---
+Result: [3.0000000000e+00, 2.0000000000e+00]
+Function evals: 3467
