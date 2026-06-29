@@ -41,7 +41,9 @@ If the newly sampled matrix exhibits linearly dependent columns (numerical singu
 
 ### Test 1: Runtime Scaling & Function Evaluations
 To evaluate the scalability of the routines against full Newton-Raphson benchmarks, a chained synthetic system was constructed capable of scaling to arbitrary dimensions ($N$):
+
 $$f_i(x)=x_i^2-x_i \quad \text{for } i \in [1, 2, \dots, N-1]$$
+
 $$f_N(x)=x_N^2-1$$
 
 The execution windows were timed using the C++ standard `chrono` library. A linear-linear scale was selected over a log-log plot to avoid heavy visual compression at low dimensions and to keep the subtle tracking differences between the two Broyden methods legible.
@@ -56,6 +58,7 @@ However, monitoring the **total function evaluations** exposes the real computat
 
 ### Test 2: Convergence Mapping & Stability Basins
 To rigorously stress-test the structural limits of the rank-1 updates, the routines were mapped across the non-linear intersection of a circle and a highly distorted sinusoidal wave:
+
 $$f_1(x,y)=x^2+y^2-4=0, \quad f_2(x,y)=\sin(x+y^2)-0.5=0$$
 
 A uniform grid of initial guesses $(X_0, Y_0) \in [-3, 3] \times [-3, 3]$ was mapped out. The color spectrum tracks the iteration count required to resolve the roots. The execution ceiling was locked at 100 steps; any trial resulting in divergence or stagnation was assigned a value of 120 to clearly isolate failure zones. Crucially, the automated Jacobian reset utility was completely deactivated for this run to observe how the unassisted rank-1 updates handle challenging terrains.
@@ -81,11 +84,15 @@ To profile this behavior, the solver traced the narrow, parabolic channel of the
 A primary application of multi-dimensional root-finding in physics is resolving large-scale static equilibrium profiles. Here, the system solves for the geometric sag of a heavy spring-mass chain suspended under uniform gravity between fixed coordinates $(-5,0)$ and $(5,0)$. Specifying $N=100$ internal moving point masses expands the computational state space into a **200-dimensional coupled non-linear system**.
 
 Static equilibrium dictates that the net force vector acting upon every discrete node $i$ must precisely balance to zero:
+
 $$\vec{F}_{\text{net}, i} = \vec{F}_{\text{spring}, i} + \vec{F}_{\text{spring}, i+1} + \vec{F}_{\text{gravity}, i} = \mathbf{0}$$
 
 This physical constraint translates directly into a system of $2N$ algebraic equations for the coordinates:
+
 $$f_{x,i}=k\left(1-\frac{L}{r_{i-1,i}}\right)(x_i-x_{i-1})-k\left(1-\frac{L}{r_{i,i+1}}\right)(x_{i+1}-x_i)=0$$
+
 $$f_{y,i}=k\left(1-\frac{L}{r_{i-1,i}}\right)(y_i-y_{i-1})-k\left(1-\frac{L}{r_{i,i+1}}\right)(y_{i+1}-y_i)-mg=0$$
+
 Where $k=100$ represents the elastic spring constant, $L$ is the relaxed spring rest length, $r_{a,b}$ represents Euclidean distances from $a$ to $b$, and $mg$ is the gravitational down-pull ($m=1.0, g=9.81$).
 
 The fully resolved system maps a physical catenary profile. With the newly integrated Jacobian recalculation mechanism active, the solver dynamically flushes stale matrix history whenever line search steps stall. This prevents information latency down the chain links and allows the 200-dimensional system to comfortably converge within the default limit of 100 iterations, driving the final terminal residual norm down to an exceptional numerical precision of $3.44 \cdot 10^{-8}$.
