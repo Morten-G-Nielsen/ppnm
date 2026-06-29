@@ -14,9 +14,11 @@ I reused the code from my multi-dimensional root-finding assignment due to its o
 Both variants achieve computational acceleration by applying a rank-1 algebraic update directly to the approximate inverse Jacobian matrix $B$. This bypasses the necessity of executing a computationally expensive $\mathcal{O}(N^3)$ QR decomposition/inversion loop at every iteration step. 
 
 The Good Broyden method updates the matrix via:
+
 $$\Delta B=\frac{\Delta x-B\Delta f}{\Delta x^TB\Delta f}\Delta x^TB$$
 
 Conversely, the Bad Broyden method applies the following update formulation:
+
 $$\Delta B=\frac{\Delta x-B\Delta f}{\Delta f^T\Delta f}\Delta f^T$$
 
 By leveraging these cheap rank-1 corrections, Broyden's method requires evaluating a full finite-difference Jacobian exactly once at initialization ($i=0$). Under ideal, smooth conditions, subsequent updates drop the per-step time complexity from $\mathcal{O}(N^3)$ down to an agile $\mathcal{O}(N^2)$. 
