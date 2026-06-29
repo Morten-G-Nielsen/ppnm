@@ -1,5 +1,5 @@
 # Multi-Dimensional Non-Linear Root Finder
-**Course:** Computational Methods for Physicists  
+**Course:** Pratical Programming & Numerical Methods  
 **Author:** Morten Nielsen  
 **Project Task:** Implement Broyden's Method to solve non-linear equations in multi-dimensions.
 

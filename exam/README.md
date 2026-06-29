@@ -1,6 +1,6 @@
 
 # Multi-Dimensional Non-Linear Root Finder
-**Course:** Computational Methods for Physicists  
+**Course:** Practical Programming & Numerical Methods
 **Author:** Morten Nielsen  
 **Project Task:** Implement Broyden's Method to solve non-linear equations in multi-dimensions.
 
@@ -97,7 +97,7 @@ $$f_{y,i}=k\left(1-\frac{L}{r_{i-1,i}}\right)(y_i-y_{i-1})-k\left(1-\frac{L}{r_{
 
 Where $k=100$ represents the elastic spring constant, $L$ is the relaxed spring rest length, $r_{a,b}$ represents Euclidean distances from $a$ to $b$, and $mg$ is the gravitational down-pull ($m=1.0, g=9.81$).
 
-The fully resolved system maps a physical catenary profile. With the newly integrated Jacobian recalculation mechanism active, the solver dynamically flushes stale matrix history whenever line search steps stall. This prevents information latency down the chain links and allows the 200-dimensional system to comfortably converge within the default limit of 100 iterations, driving the final terminal residual norm down to an exceptional numerical precision of $3.44 \cdot 10^{-8}$.
+The fully resolved system maps a physical catenary profile. With the newly integrated Jacobian recalculation mechanism active, the solver dynamically flushes stale matrix history whenever line search steps stall. This prevents information latency down the chain links and allows the 200-dimensional system to comfortably converge within the default limit of 100 iterations, driving the final terminal residual norm down to an exceptional numerical precision of $3.44 \cdot 10^{-8}$, which can be seen at the bottom of `data/data_chain.txt`.
 
 ![Chain](plots/plot_chain.svg)
 
@@ -109,11 +109,11 @@ The fully resolved system maps a physical catenary profile. With the newly integ
 This project pipeline was augmented through deliberate collaboration with the large language model Google Gemini. The model served as an excellent assistant for debugging segmentation faults during vector allocation, optimizing automated `gnuplot` compilation scripts within the `Makefile`, and brainstorming project extensions. It was also utilized to correct grammar, spelling, and phrasing throughout this README; if you are interested in reviewing the original unedited text, please refer to `draft.md`.
 
 ### 3.2 Deliverable Summary & Project Score
-The assignment successfully fulfills all technical objectives outlined in the course syllabus while expanding into a comprehensive comparative study. Core milestones achieved include:
-* Full implementations of both Good and Bad Broyden rank-1 updating routines.
-* Quantitative runtime complexity profiling against classic Newton-Raphson baselines.
-* Topological stability analysis mapping local convergence basins across non-linear domains.
-* High-dimensional verification scaling to a 200-dimensional system modeling physical static catenary curves.
+The project successfully fulfills the given task, while simultaneously fulfilling the objectives given in the course syllabus. Specifically, I have:
+* Implemented both the Good Broyden's method and the Bad Broyden's method.
+* Tested their scalability against Newton's method and each other.
+* Stress-tested their convergence on a more complex non-linear system.
+* Applied the Good Broyden method to a high-dimensional physical problem (a multi-dimensional, non-linear catenary equilibrium curve).
 
 Potential areas for future exploration include a deeper analysis of the interplay between line-search constraints and update health, as well as lower-level compiler profiling. However, micromanaging minor low-level cache misses was deemed outside the scope of evaluating the fundamental numerical linear algebra.
 
